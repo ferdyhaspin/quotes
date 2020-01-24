@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="utf-8"?>
+<navigation xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/nav_graph"
+    app:startDestination="@id/profileFragment">
+
+    <fragment
+        android:id="@+id/profileFragment"
+        android:name="app.ferdyhaspin.quotes.ui.home.profile.ProfileFragment"
+        android:label="Profile"
+        tools:layout="@layout/fragment_profile" />
+    <fragment
+        android:id="@+id/quotesFragment"
+        android:name="app.ferdyhaspin.quotes.ui.home.quotes.QuotesFragment"
+        android:label="Quotes"
+        tools:layout="@layout/fragment_quotes" />
+
+    <activity
+        android:id="@+id/logout"
+        android:name="app.ferdyhaspin.quotes.ui.auth.LoginActivity"/>
+</navigation>

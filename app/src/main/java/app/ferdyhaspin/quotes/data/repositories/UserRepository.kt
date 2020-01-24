@@ -1,4 +1,4 @@
-package app.ferdyhaspin.quotes.data.repository
+package app.ferdyhaspin.quotes.data.repositories
 
 import app.ferdyhaspin.quotes.data.db.AppDatabase
 import app.ferdyhaspin.quotes.data.db.entities.User

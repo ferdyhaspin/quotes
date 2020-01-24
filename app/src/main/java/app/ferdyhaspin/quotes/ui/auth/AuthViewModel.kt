@@ -3,7 +3,7 @@ package app.ferdyhaspin.quotes.ui.auth
 import android.content.Intent
 import android.view.View
 import androidx.lifecycle.ViewModel
-import app.ferdyhaspin.quotes.data.repository.UserRepository
+import app.ferdyhaspin.quotes.data.repositories.UserRepository
 import app.ferdyhaspin.quotes.utils.ApiException
 import app.ferdyhaspin.quotes.utils.Coroutines
 import app.ferdyhaspin.quotes.utils.NoInternetException

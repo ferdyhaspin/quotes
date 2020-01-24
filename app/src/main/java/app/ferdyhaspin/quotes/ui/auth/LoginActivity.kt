@@ -11,8 +11,9 @@ import app.ferdyhaspin.quotes.data.db.AppDatabase
 import app.ferdyhaspin.quotes.data.db.entities.User
 import app.ferdyhaspin.quotes.data.network.NetworkConnectionInterceptor
 import app.ferdyhaspin.quotes.data.network.Service
-import app.ferdyhaspin.quotes.data.repository.UserRepository
+import app.ferdyhaspin.quotes.data.repositories.UserRepository
 import app.ferdyhaspin.quotes.databinding.ActivityLoginBinding
+import app.ferdyhaspin.quotes.ui.ViewModelFactory
 import app.ferdyhaspin.quotes.ui.home.HomeActivity
 import app.ferdyhaspin.quotes.utils.hide
 import app.ferdyhaspin.quotes.utils.show
@@ -29,7 +30,7 @@ class LoginActivity : AppCompatActivity(), AuthListener {
         val db = AppDatabase(this)
         val service = Service(interceptor)
         val repository = UserRepository(service, db)
-        val factory = AuthViewModelFactory(repository)
+        val factory = ViewModelFactory(AuthViewModel(repository))
 
         val binding: ActivityLoginBinding =
             DataBindingUtil.setContentView(this, R.layout.activity_login)
