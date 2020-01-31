@@ -5,7 +5,7 @@
     <data>
 
         <variable
-            name="quote"
+            name="quoteItem"
             type="app.ferdyhaspin.quotes.data.db.entities.Quote" />
     </data>
 
@@ -22,7 +22,7 @@
                 android:id="@+id/quote"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:text="@{`'`+quote.quote+`'`}"
+                android:text="@{`'`+quoteItem.quote+`'`}"
                 android:textAppearance="@style/TextAppearance.AppCompat.Headline"
                 android:textColor="@color/colorPrimaryDark"
                 tools:text="Success doesn’t just find you. You have to go out and get it." />
@@ -34,7 +34,7 @@
                 android:layout_below="@id/quote"
                 android:layout_alignParentEnd="true"
                 android:layout_alignParentRight="true"
-                android:text="@{`-` + quote.author}"
+                android:text="@{`-` + quoteItem.author}"
                 android:textAppearance="@style/TextAppearance.AppCompat.Medium"
                 android:textColor="@color/colorPrimary"
                 android:textStyle="italic"

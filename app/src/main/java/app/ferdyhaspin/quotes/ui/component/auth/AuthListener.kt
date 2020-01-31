@@ -1,4 +1,4 @@
-package app.ferdyhaspin.quotes.ui.auth
+package app.ferdyhaspin.quotes.ui.component.auth
 
 import app.ferdyhaspin.quotes.data.db.entities.User
 

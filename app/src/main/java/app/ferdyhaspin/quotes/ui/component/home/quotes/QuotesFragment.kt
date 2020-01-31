@@ -1,4 +1,4 @@
-package app.ferdyhaspin.quotes.ui.home.quotes
+package app.ferdyhaspin.quotes.ui.component.home.quotes
 
 
 import android.os.Bundle
@@ -16,7 +16,7 @@ import app.ferdyhaspin.quotes.data.network.NetworkConnectionInterceptor
 import app.ferdyhaspin.quotes.data.network.Service
 import app.ferdyhaspin.quotes.data.preferences.PreferenceProvider
 import app.ferdyhaspin.quotes.data.repositories.QuoteRepository
-import app.ferdyhaspin.quotes.ui.ViewModelFactory
+import app.ferdyhaspin.quotes.ui.ViewModelFactoryOld
 import app.ferdyhaspin.quotes.utils.Coroutines
 import app.ferdyhaspin.quotes.utils.hide
 import app.ferdyhaspin.quotes.utils.show
@@ -48,7 +48,7 @@ class QuotesFragment : Fragment() {
         val db = AppDatabase(requireContext())
         val preferenceProvider = PreferenceProvider(requireContext())
         val repository = QuoteRepository(service, db, preferenceProvider)
-        val factory = ViewModelFactory(QuotesViewModel(repository))
+        val factory = ViewModelFactoryOld(QuotesViewModel(repository))
 
         viewModel = ViewModelProviders.of(this, factory).get(QuotesViewModel::class.java)
         bindUI()

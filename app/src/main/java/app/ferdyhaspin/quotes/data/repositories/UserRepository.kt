@@ -5,8 +5,10 @@ import app.ferdyhaspin.quotes.data.db.entities.User
 import app.ferdyhaspin.quotes.data.network.SafeApiRequest
 import app.ferdyhaspin.quotes.data.network.Service
 import app.ferdyhaspin.quotes.data.network.responses.AuthResponse
+import javax.inject.Inject
 
-class UserRepository(
+class UserRepository @Inject
+constructor(
     private val service: Service,
     private val db: AppDatabase
 ) : SafeApiRequest() {

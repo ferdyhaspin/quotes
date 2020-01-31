@@ -9,7 +9,8 @@ import app.ferdyhaspin.quotes.data.db.entities.User
 
 @Database(
     entities = [User::class, Quote::class],
-    version = 1
+    version = 1,
+    exportSchema = false
 )
 abstract class AppDatabase : RoomDatabase() {
 

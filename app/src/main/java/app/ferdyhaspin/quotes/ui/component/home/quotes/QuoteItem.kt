@@ -1,4 +1,4 @@
-package app.ferdyhaspin.quotes.ui.home.quotes
+package app.ferdyhaspin.quotes.ui.component.home.quotes
 
 import app.ferdyhaspin.quotes.R
 import app.ferdyhaspin.quotes.data.db.entities.Quote
@@ -12,6 +12,6 @@ class QuoteItem(
     override fun getLayout() = R.layout.item_quote
 
     override fun bind(viewBinding: ItemQuoteBinding, position: Int) {
-        viewBinding.setQuote(quote)
+        viewBinding.quoteItem = quote
     }
 }

@@ -2,7 +2,7 @@
  * Created by ferdyhaspin on 1/23/20 6:11 PM
  */
 
-package app.ferdyhaspin.quotes.ui.home.quotes
+package app.ferdyhaspin.quotes.ui.component.home.quotes
 
 import androidx.lifecycle.ViewModel
 import app.ferdyhaspin.quotes.data.repositories.QuoteRepository

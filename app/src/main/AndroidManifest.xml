@@ -15,9 +15,9 @@
         android:supportsRtl="true"
         android:theme="@style/AppTheme"
         tools:ignore="GoogleAppIndexingWarning">
-        <activity android:name=".ui.home.HomeActivity" />
-        <activity android:name=".ui.auth.SignUpActivity" />
-        <activity android:name=".ui.auth.LoginActivity">
+        <activity android:name="app.ferdyhaspin.quotes.ui.component.home.HomeActivity" />
+        <activity android:name="app.ferdyhaspin.quotes.ui.component.auth.SignUpActivity" />
+        <activity android:name="app.ferdyhaspin.quotes.ui.component.auth.LoginActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 

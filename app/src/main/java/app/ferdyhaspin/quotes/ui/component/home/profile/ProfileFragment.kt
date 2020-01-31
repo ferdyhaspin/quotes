@@ -1,42 +1,44 @@
-package app.ferdyhaspin.quotes.ui.home.profile
+package app.ferdyhaspin.quotes.ui.component.home.profile
 
 
+import android.content.Context
 import android.os.Bundle
-import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.databinding.DataBindingUtil
-import androidx.lifecycle.ViewModelProviders
-
+import androidx.fragment.app.Fragment
 import app.ferdyhaspin.quotes.R
-import app.ferdyhaspin.quotes.data.db.AppDatabase
-import app.ferdyhaspin.quotes.data.network.NetworkConnectionInterceptor
-import app.ferdyhaspin.quotes.data.network.Service
-import app.ferdyhaspin.quotes.data.repositories.UserRepository
 import app.ferdyhaspin.quotes.databinding.FragmentProfileBinding
 import app.ferdyhaspin.quotes.ui.ViewModelFactory
+import dagger.android.support.AndroidSupportInjection
+import javax.inject.Inject
 
 /**
  * A simple [Fragment] subclass.
  */
 class ProfileFragment : Fragment() {
 
+    @Inject
+    lateinit var viewModel: ProfileViewModel
+
+    @Inject
+    lateinit var viewModelFactory: ViewModelFactory
+
+    override fun onAttach(context: Context) {
+        AndroidSupportInjection.inject(this)
+        super.onAttach(context)
+    }
+
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
 
-        val interceptor = NetworkConnectionInterceptor(requireContext())
-        val db = AppDatabase(requireContext())
-        val service = Service(interceptor)
-        val repository = UserRepository(service, db)
-        val factory = ViewModelFactory(ProfileViewModel(repository))
+        viewModel = viewModelFactory.create(ProfileViewModel::class.java)
 
         val binding: FragmentProfileBinding =
             DataBindingUtil.inflate(inflater, R.layout.fragment_profile, container, false)
-
-        val viewModel = ViewModelProviders.of(this, factory).get(ProfileViewModel::class.java)
 
         binding.viewmodel = viewModel
         binding.lifecycleOwner = this
@@ -44,6 +46,4 @@ class ProfileFragment : Fragment() {
         return binding.root
 
     }
-
-
 }

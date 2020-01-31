@@ -7,7 +7,7 @@
 
         <variable
             name="viewModel"
-            type="app.ferdyhaspin.quotes.ui.auth.AuthViewModel" />
+            type="app.ferdyhaspin.quotes.ui.component.auth.AuthViewModel" />
 
     </data>
 
@@ -16,7 +16,7 @@
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:background="#E2E2E2"
-        tools:context=".ui.auth.SignupActivity">
+        tools:context=".ui.component.auth.SignupActivity">
 
 
         <RelativeLayout
@@ -129,10 +129,11 @@
                     android:textColor="@color/colorPrimaryDark" />
 
                 <Button
+                    android:id="@+id/btn_sign_up"
                     android:layout_width="150dp"
                     android:layout_height="wrap_content"
                     android:layout_gravity="center_horizontal"
-                    android:onClick="@{viewModel::onSignUpButtonClick}"
+                    android:onClick="@{viewModel::onClick}"
                     android:text="Sign Up"
                     android:textAllCaps="false" />
 

@@ -1,16 +1,30 @@
-package app.ferdyhaspin.quotes.ui.auth
+/*
+ * Created by Ferdi Haspi Nur Imanulloh on 1/31/20 11:00 AM
+ *
+ * Instagram : https://www.instagram.com/ferdyhaspin
+ * LinkedIn : https://www.linkedin.com/in/ferdyhaspin
+ * Github : https://www.github.com/ferdyhaspin
+ *
+ * Email : ferdihaspin@gmail.com
+ *
+ * Last modified 1/31/20 11:00 AM
+ */
+
+package app.ferdyhaspin.quotes.ui.component.auth
 
 import android.content.Intent
 import android.view.View
-import androidx.lifecycle.ViewModel
+import app.ferdyhaspin.quotes.R
 import app.ferdyhaspin.quotes.data.repositories.UserRepository
+import app.ferdyhaspin.quotes.ui.base.BaseViewModel
 import app.ferdyhaspin.quotes.utils.ApiException
 import app.ferdyhaspin.quotes.utils.Coroutines
 import app.ferdyhaspin.quotes.utils.NoInternetException
+import javax.inject.Inject
 
-class AuthViewModel(
-    private val userRepository: UserRepository
-) : ViewModel() {
+class AuthViewModel @Inject
+constructor(private val userRepository: UserRepository) :
+    BaseViewModel() {
 
     var name: String? = null
     var email: String? = null
@@ -20,12 +34,20 @@ class AuthViewModel(
 
     fun getLoggedInUser() = userRepository.getUser()
 
-    fun onLoginButtonClick(view: View) {
+    fun onClick(view: View) {
+        when (view.id) {
+            R.id.btn_login -> doLogin()
+            R.id.btn_sign_up -> doSignUp()
+        }
+    }
+
+    private fun doLogin() {
         authListener?.onStarted()
         if (email.isNullOrEmpty() || password.isNullOrEmpty()) {
             authListener?.onFailure("Invalid email or password")
             return
         }
+
         Coroutines.main {
             try {
                 val authResult = userRepository.userLogin(email!!, password!!)
@@ -43,19 +65,7 @@ class AuthViewModel(
         }
     }
 
-    fun onSignUp(view: View) {
-        Intent(view.context, SignUpActivity::class.java).also {
-            view.context.startActivity(it)
-        }
-    }
-
-    fun onLogin(view: View) {
-        Intent(view.context, LoginActivity::class.java).also {
-            view.context.startActivity(it)
-        }
-    }
-
-    fun onSignUpButtonClick(view: View) {
+    private fun doSignUp() {
         authListener?.onStarted()
 
         if (name.isNullOrEmpty()) {
@@ -93,8 +103,18 @@ class AuthViewModel(
                 authListener?.onFailure(e.message!!)
             }
         }
-
     }
 
+    fun onSignUp(view: View) {
+        Intent(view.context, SignUpActivity::class.java).also {
+            view.context.startActivity(it)
+        }
+    }
+
+    fun onLogin(view: View) {
+        Intent(view.context, LoginActivity::class.java).also {
+            view.context.startActivity(it)
+        }
+    }
 
 }

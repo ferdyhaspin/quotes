@@ -1,9 +1,9 @@
-package app.ferdyhaspin.quotes.ui.home.profile
+package app.ferdyhaspin.quotes.ui.component.home.profile
 
 import androidx.lifecycle.ViewModel
 import app.ferdyhaspin.quotes.data.repositories.UserRepository
 
-class ProfileViewModel(
+class ProfileViewModelOld(
     repository: UserRepository
 ) : ViewModel() {
 
