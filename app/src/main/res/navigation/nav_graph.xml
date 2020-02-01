@@ -16,7 +16,4 @@
         android:label="Quotes"
         tools:layout="@layout/fragment_quotes" />
 
-    <activity
-        android:id="@+id/logout"
-        android:name="app.ferdyhaspin.quotes.ui.component.auth.LoginActivity"/>
 </navigation>

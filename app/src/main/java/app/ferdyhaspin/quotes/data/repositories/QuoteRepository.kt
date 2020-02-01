@@ -9,18 +9,21 @@ import androidx.lifecycle.MutableLiveData
 import app.ferdyhaspin.quotes.data.db.AppDatabase
 import app.ferdyhaspin.quotes.data.db.entities.Quote
 import app.ferdyhaspin.quotes.data.network.SafeApiRequest
-import app.ferdyhaspin.quotes.data.network.Service
+import app.ferdyhaspin.quotes.data.network.ApiService
+import app.ferdyhaspin.quotes.data.network.responses.QuotesResponse
 import app.ferdyhaspin.quotes.data.preferences.PreferenceProvider
 import app.ferdyhaspin.quotes.utils.Coroutines
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.withContext
 import java.time.LocalDateTime
 import java.time.temporal.ChronoUnit
+import javax.inject.Inject
 
 private const val MINIMUM_INTERVAL = 6
 
-class QuoteRepository(
-    private val api: Service,
+class QuoteRepository @Inject
+constructor(
+    private val api: ApiService,
     private val db: AppDatabase,
     private val prefs: PreferenceProvider
 ) : SafeApiRequest() {
@@ -33,8 +36,12 @@ class QuoteRepository(
         }
     }
 
-    suspend fun getQuotes() : LiveData<List<Quote>> {
-        return withContext(Dispatchers.IO){
+    suspend fun getQuotesNew() : QuotesResponse{
+        return apiRequest { api.getQuotes() }
+    }
+
+    suspend fun getQuotes(): LiveData<List<Quote>> {
+        return withContext(Dispatchers.IO) {
             fetchQuotes()
             db.getQuoteDao().getQuotes()
         }

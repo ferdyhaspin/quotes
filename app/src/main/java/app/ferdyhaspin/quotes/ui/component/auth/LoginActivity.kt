@@ -35,8 +35,8 @@ class LoginActivity : BaseActivity(), AuthListener {
     }
 
     override fun onSuccess(user: User) {
-        user.also {
-            toast(it.toString())
+        user.apply {
+            toast(toString())
         }
         progress_bar.hide()
     }
@@ -48,9 +48,9 @@ class LoginActivity : BaseActivity(), AuthListener {
 
     private fun navigateToHome(user: User?) {
         if (user != null) {
-            Intent(this, HomeActivity::class.java).also {
-                it.flags = Intent.FLAG_ACTIVITY_NEW_TASK or Intent.FLAG_ACTIVITY_CLEAR_TASK
-                startActivity(it)
+            Intent(this, HomeActivity::class.java).apply {
+                this.flags = Intent.FLAG_ACTIVITY_NEW_TASK or Intent.FLAG_ACTIVITY_CLEAR_TASK
+                startActivity(this)
             }
         }
     }

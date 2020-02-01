@@ -14,6 +14,8 @@ package app.ferdyhaspin.quotes.di.module
 import androidx.lifecycle.ViewModel
 import app.ferdyhaspin.quotes.di.scope.ViewModelKey
 import app.ferdyhaspin.quotes.ui.component.auth.AuthViewModel
+import app.ferdyhaspin.quotes.ui.component.home.profile.ProfileViewModel
+import app.ferdyhaspin.quotes.ui.component.home.quotes.QuotesViewModel
 import dagger.Binds
 import dagger.Module
 import dagger.multibindings.IntoMap
@@ -25,5 +27,15 @@ abstract class ViewModelModule {
     @Binds
     @IntoMap
     @ViewModelKey(AuthViewModel::class)
-    internal abstract fun bindQuotesViewModel(viewModel: AuthViewModel): ViewModel
+    internal abstract fun bindAuthViewModel(viewModel: AuthViewModel): ViewModel
+
+    @Binds
+    @IntoMap
+    @ViewModelKey(ProfileViewModel::class)
+    internal abstract fun bindProfileViewModel(viewModel: ProfileViewModel): ViewModel
+
+    @Binds
+    @IntoMap
+    @ViewModelKey(QuotesViewModel::class)
+    internal abstract fun bindQuotesViewModel(viewModel: QuotesViewModel): ViewModel
 }

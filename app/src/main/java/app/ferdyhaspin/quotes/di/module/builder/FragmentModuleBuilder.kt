@@ -13,12 +13,17 @@
 package app.ferdyhaspin.quotes.di.module.builder
 
 import app.ferdyhaspin.quotes.ui.component.home.profile.ProfileFragment
+import app.ferdyhaspin.quotes.ui.component.home.quotes.QuotesFragment
 import dagger.Module
 import dagger.android.ContributesAndroidInjector
 
+@Suppress("unused")
 @Module
 abstract class FragmentModuleBuilder {
 
     @ContributesAndroidInjector
     abstract fun contributeMainFragment(): ProfileFragment
+
+    @ContributesAndroidInjector
+    abstract fun contributeQuoteFragment(): QuotesFragment
 }

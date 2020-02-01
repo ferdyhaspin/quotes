@@ -9,8 +9,4 @@
         android:id="@+id/quotesFragment"
         android:title="Quotes" />
 
-    <item
-        android:id="@+id/logout"
-        android:title="Logout" />
-
 </menu>

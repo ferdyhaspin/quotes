@@ -11,7 +11,7 @@ import retrofit2.http.FormUrlEncoded
 import retrofit2.http.GET
 import retrofit2.http.POST
 
-interface Service {
+interface ApiService {
 
     @FormUrlEncoded
     @POST("login")
@@ -34,7 +34,7 @@ interface Service {
     companion object {
         operator fun invoke(
             networkConnectionInterceptor: NetworkConnectionInterceptor
-        ): Service {
+        ): ApiService {
 
             val okkHttpclient = OkHttpClient.Builder()
                 .addInterceptor(networkConnectionInterceptor)
@@ -45,7 +45,7 @@ interface Service {
                 .baseUrl("https://api.simplifiedcoding.in/course-apis/mvvm/")
                 .addConverterFactory(GsonConverterFactory.create())
                 .build()
-                .create(Service::class.java)
+                .create(ApiService::class.java)
         }
     }
 

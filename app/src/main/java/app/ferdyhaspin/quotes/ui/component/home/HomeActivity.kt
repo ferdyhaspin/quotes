@@ -2,22 +2,15 @@ package app.ferdyhaspin.quotes.ui.component.home
 
 import android.os.Bundle
 import androidx.appcompat.app.AppCompatActivity
-import androidx.fragment.app.Fragment
 import androidx.navigation.Navigation
 import androidx.navigation.fragment.NavHostFragment
 import androidx.navigation.ui.NavigationUI
 import app.ferdyhaspin.quotes.R
 import app.ferdyhaspin.quotes.utils.toast
 import dagger.android.AndroidInjection
-import dagger.android.DispatchingAndroidInjector
-import dagger.android.support.HasSupportFragmentInjector
 import kotlinx.android.synthetic.main.activity_home.*
-import javax.inject.Inject
 
-class HomeActivity : AppCompatActivity(), HasSupportFragmentInjector {
-
-    @Inject
-    lateinit var dispatchingAndroidInjector: DispatchingAndroidInjector<Fragment>
+class HomeActivity : AppCompatActivity() {
 
     override fun onCreate(savedInstanceState: Bundle?) {
         AndroidInjection.inject(this)
@@ -30,14 +23,6 @@ class HomeActivity : AppCompatActivity(), HasSupportFragmentInjector {
         NavigationUI.setupWithNavController(nav_view, navController)
         NavigationUI.setupActionBarWithNavController(this, navController, drawer_layout)
 
-        NavHostFragment.findNavController(fragment)
-            .addOnDestinationChangedListener { _, destination, _ ->
-                when (destination.id) {
-                    R.id.logout -> {
-                        toast("Logout")
-                    }
-                }
-            }
     }
 
     override fun onSupportNavigateUp(): Boolean {
@@ -46,6 +31,4 @@ class HomeActivity : AppCompatActivity(), HasSupportFragmentInjector {
             drawer_layout
         )
     }
-
-    override fun supportFragmentInjector() = dispatchingAndroidInjector
 }

@@ -16,7 +16,8 @@ import android.content.Context
 import app.ferdyhaspin.quotes.App
 import app.ferdyhaspin.quotes.data.db.AppDatabase
 import app.ferdyhaspin.quotes.data.network.NetworkConnectionInterceptor
-import app.ferdyhaspin.quotes.data.network.Service
+import app.ferdyhaspin.quotes.data.network.ApiService
+import app.ferdyhaspin.quotes.data.preferences.PreferenceProvider
 import dagger.Module
 import dagger.Provides
 import javax.inject.Singleton
@@ -39,13 +40,19 @@ class AppModule {
 
     @Provides
     @Singleton
-    fun provideService(): Service {
-        return Service(provideNetworkConnectionInterceptor())
+    fun provideService(): ApiService {
+        return ApiService(provideNetworkConnectionInterceptor())
     }
 
     @Provides
     @Singleton
     fun provideAppDatabase(): AppDatabase {
         return AppDatabase(provideContext())
+    }
+
+    @Provides
+    @Singleton
+    fun providePreferenceProvider(): PreferenceProvider{
+        return PreferenceProvider(provideContext())
     }
 }
